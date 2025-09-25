@@ -75,4 +75,16 @@ vim.o.wrap = false
 -- Highlight max chars per line
 -- vim.o.colorcolumn = '120'
 
+-- Configure spell check
+--  Autocommand to enable spell check for specified file types
+vim.api.nvim_create_autocmd('FileType', {
+  desc = 'Spell checking for some filetypes',
+  pattern = { 'latex', 'tex', 'md', 'markdown', 'rnoweb' },
+  command = 'setlocal spell',
+})
+--  Spell check languages
+vim.opt.spelllang = { 'en_us', 'de_20' }
+--  Don't check for lowercase at beginning of sentences
+vim.g.spellcapcheck = ' '
+
 -- vim: ts=2 sts=2 sw=2 et
