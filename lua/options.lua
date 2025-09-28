@@ -14,6 +14,13 @@ vim.o.mouse = 'a'
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
 
+-- the great indentation debate
+local tabsize = 2
+vim.opt.expandtab = false -- tabs over spaces
+vim.opt.shiftwidth = tabsize
+vim.opt.tabstop = tabsize
+vim.opt.softtabstop = -1 -- Set to -1 mirrors 'shiftwidth'
+
 -- Enable break indent
 vim.o.breakindent = true
 
@@ -79,5 +86,9 @@ vim.api.nvim_create_autocmd('FileType', {
 vim.opt.spelllang = { 'en_us', 'de_20' }
 --  Don't check for lowercase at beginning of sentences
 vim.g.spellcapcheck = ' '
+
+-- Specify path to Python 3 provider
+-- NOTE: I use a venv specifically for neovim
+vim.g.python3_host_prog = os.getenv 'HOME' .. '/.local/share/python-venvs/nvim-venv/bin/python'
 
 -- vim: ts=2 sts=2 sw=2 et

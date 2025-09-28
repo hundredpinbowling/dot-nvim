@@ -1,8 +1,8 @@
 -- LSP Plugins
 return {
   {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime, and plugins
+    -- used for completion, annotations, and signatures of Neovim apis
     'folke/lazydev.nvim',
     ft = 'lua',
     ---@module 'lazydev'
@@ -208,15 +208,28 @@ return {
         --  Add any additional override configuration in any of the following tables. Available keys are:
         --  - cmd (table): Override the default command used to start the server
         --  - filetypes (table): Override the default list of associated filetypes for the server
-        --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
+        --  - capabilities (table): Override the fields in capabilities. Can be used to disable certain LSP features.
         --  - settings (table): Override the default settings passed when initializing the server.
         --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
         --
         --  Feel free to add/remove any LSPs here that you want to install via Mason. They will automatically be installed and setup.
         mason = {
+          air = {}, -- for R
           -- clangd = {},
-          -- gopls = {},
-          -- pyright = {},
+          goimports = {},
+          gopls = {},
+          harper_ls = {
+            settings = {
+              ['harper-ls'] = {
+                linters = {
+                  SentenceCapitalization = false,
+                  SpellCheck = false,
+                },
+              },
+            },
+          }, -- grammar checker
+          marksman = {},
+          pyright = {},
           -- rust_analyzer = {},
           -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
           --
@@ -245,6 +258,7 @@ return {
         -- Structure is identical to the mason table from above.
         others = {
           -- dartls = {},
+          r_language_server = {},
         },
       }
 

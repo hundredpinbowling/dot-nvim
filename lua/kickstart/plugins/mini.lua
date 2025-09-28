@@ -3,6 +3,7 @@ return {
     'nvim-mini/mini.nvim',
     config = function()
       -- Better Around/Inside textobjects
+      -- See :help mini.ai for more instruction
       --
       -- Examples:
       --  - va)  - [V]isually select [A]round [)]paren
@@ -29,6 +30,18 @@ return {
       -- cursor location to LINE:COLUMN
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function() return '%2l:%-2v' end
+
+      -- Easy (un)comment lines
+      -- Examples:
+      --  - gcc  - [C]omment [C]urrent Line
+      --  - gcip - [C]omment [I]nner [P]aragraph
+      --  - gc}  - [C]omment to the next closing [}]brace
+      --  - gc   - Toggle [C]omment on Visual Selection
+      --  - dgc  - [D]elete [C]omment Block
+      require('mini.comment').setup()
+
+      -- A better vim file browser
+      require('mini.files').setup()
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
