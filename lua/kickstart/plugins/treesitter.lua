@@ -10,18 +10,20 @@ return {
     opts = {
       ensure_installed = {
         'bash',
+        'bibtex',
         'c',
         'diff',
         'html',
+        'latex',
         'lua',
         'luadoc',
         'markdown',
         'markdown_inline',
         'query',
-        'vim',
-        'vimdoc',
         'r',
         'rnoweb',
+        'vim',
+        'vimdoc',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
