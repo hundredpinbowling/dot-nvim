@@ -91,4 +91,9 @@ vim.g.spellcapcheck = ' '
 -- NOTE: I use a venv specifically for neovim
 vim.g.python3_host_prog = os.getenv 'HOME' .. '/.local/share/python-venvs/nvim-venv/bin/python'
 
+-- Disable providers that I do not use
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- vim: ts=2 sts=2 sw=2 et
