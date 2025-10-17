@@ -66,6 +66,7 @@ require('lazy').setup({
 
   require 'custom.plugins.latex',
   require 'custom.plugins.markdown',
+  require 'custom.plugins.snippets',
   -- require 'custom.plugins.dichromatic', -- a good theme for the color blind
   require 'custom.plugins.modus-themes', -- another good theme for the color blind
 
