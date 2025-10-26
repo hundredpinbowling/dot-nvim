@@ -11,5 +11,8 @@ return {
       --vim.g.tex_conceal = 'abdmg'
     end,
   },
+  {
+    'gibiansky/vim-latex-objects',
+  },
 }
 -- vim: ts=2 sts=2 sw=2 et

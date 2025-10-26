@@ -16,8 +16,6 @@ return {
         'html',
         'lua',
         'luadoc',
-        'markdown',
-        'markdown_inline',
         'query',
         'r',
         'rnoweb',
@@ -26,10 +24,10 @@ return {
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
-      ignore_install = { 'latex' },
+      ignore_install = { 'latex', 'markdown' },
       highlight = {
         enable = true,
-        disable = { 'latex' },
+        disable = { 'latex', 'markdown' },
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.

@@ -1,4 +1,25 @@
 return {
+  --- goyo is a plugin for removing distractions while writing prose
+  {
+    'junegunn/goyo.vim',
+    ft = { 'markdown' },
+  },
+  {
+    'vim-pandoc/vim-pandoc',
+  },
+  {
+    -- offers syntax highlighting for Markdown
+    -- useful for highlighting LaTeX in Markdown
+    'vim-pandoc/vim-pandoc-syntax',
+    init = function()
+      local group = vim.api.nvim_create_augroup('pandoc_syntax', { clear = true })
+      vim.api.nvim_create_autocmd({ 'BufNewFile', 'BufFilePre', 'BufRead' }, {
+        pattern = { '*.md', '*.qmd', '*.rmd' },
+        group = 'pandoc_syntax',
+        command = 'set filetype=markdown.pandoc',
+      })
+    end,
+  },
   {
     'toppair/peek.nvim',
     ft = { 'markdown', 'rmd', 'quarto' },
@@ -15,24 +36,24 @@ return {
       vim.keymap.set('n', '<leader>mq', '<cmd>PeekClose<CR>', { desc = '[m]arkdown preview [q]uit' })
     end,
   },
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter',
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-    },
-    ft = { 'markdown', 'rmd', 'quarto' },
-    config = function()
-      require('render-markdown').setup {
-        render_modes = true,
-        heading = { enabled = false },
-        -- code = { language_icon = false },
-        -- dash = { enabled = false },
-        completions = { blink = { enabled = true } },
-        latex = {
-          converter = { 'utftex' },
-        },
-      }
-    end,
-  },
+  -- {
+  --   'MeanderingProgrammer/render-markdown.nvim',
+  --   dependencies = {
+  --     'nvim-treesitter/nvim-treesitter',
+  --     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+  --   },
+  --   ft = { 'markdown', 'rmd', 'quarto' },
+  --   config = function()
+  --     require('render-markdown').setup {
+  --       render_modes = true,
+  --       heading = { enabled = false },
+  --       -- code = { language_icon = false },
+  --       -- dash = { enabled = false },
+  --       completions = { blink = { enabled = true } },
+  --       latex = {
+  --         converter = { 'utftex' },
+  --       },
+  --     }
+  --   end,
+  -- },
 }
