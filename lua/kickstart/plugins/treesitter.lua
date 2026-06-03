@@ -21,6 +21,7 @@ return {
         'rnoweb',
         'vim',
         'vimdoc',
+        'css',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,

@@ -31,9 +31,8 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        quarto = { 'injeced' },
+        quarto = { 'injected' },
         rmd = { 'injected' },
-        md = { 'injected' },
         markdown = { 'injected' },
         r = { 'air' }, -- requires air to be installed through mason, see lspconfig.lua
         -- Conform can also run multiple formatters sequentially

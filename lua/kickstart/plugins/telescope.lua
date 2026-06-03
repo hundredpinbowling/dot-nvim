@@ -6,6 +6,17 @@
 -- Use the `dependencies` key to specify the dependencies of a particular plugin
 
 return {
+  { --- zoxide integration, works with telescope
+    'alfaix/nvim-zoxide',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {
+        -- will define Z[!], Zt[!], Zw[!] for :cd, :tcd, :lcd respectively 
+        -- set to false if you want to define different ones
+        define_commands = true,
+        -- path to zoxide executable; by default must be in $PATH
+        path = 'zoxide',
+    },
+  },
   { -- Fuzzy Finder (files, lsp, etc)
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -69,6 +80,7 @@ return {
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      pcall(require('telescope').load_extension, 'zoxide')
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'

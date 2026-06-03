@@ -21,14 +21,16 @@ return {
     end,
   },
   {
-    'toppair/peek.nvim',
-    ft = { 'markdown', 'rmd', 'quarto' },
+    -- 'toppair/peek.nvim',
+    'sazk07/peek.nvim',
+    ft = { 'pandoc', 'markdown', 'markdown.pandoc', 'rmd', 'quarto' },
     build = 'deno task --quiet build:fast',
     config = function()
       require('peek').setup {
         auto_load = false,
         syntax = false,
         app = 'browser',
+        filetype = { 'pandoc', 'markdown', 'rmd', 'quarto' },
       }
       vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
       vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})

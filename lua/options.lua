@@ -85,7 +85,7 @@ vim.api.nvim_create_autocmd('FileType', {
 --  Spell check languages
 vim.opt.spelllang = { 'en_us', 'de_20' }
 --  Don't check for lowercase at beginning of sentences
-vim.g.spellcapcheck = ' '
+vim.opt.spellcapcheck = ' '
 
 -- Specify path to Python 3 provider
 -- NOTE: I use a venv specifically for neovim
@@ -95,5 +95,22 @@ vim.g.python3_host_prog = os.getenv 'HOME' .. '/.local/share/python-venvs/nvim-v
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+-- In vimdiff, ignore all changes in whitespace.
+-- Make this the default
+vim.opt.diffopt:append 'iwhiteall'
+-- Create a command to toggle iwhiteall in 'diffopt'
+vim.api.nvim_create_user_command('DiffToggleIgnoreWhite', function()
+  local opt = vim.opt.diffopt
+  local name = 'iwhiteall'
+
+  if vim.tbl_contains(opt:get(), name) then
+    opt:remove(name)
+    vim.notify('diffopt: removed ' .. name)
+  else
+    opt:append(name)
+    vim.notify('diffopt: added ' .. name)
+  end
+end, { desc = "Toggle 'iwhiteall' in 'diffopt'" })
 
 -- vim: ts=2 sts=2 sw=2 et
