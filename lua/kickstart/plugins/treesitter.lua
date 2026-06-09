@@ -1,3 +1,5 @@
+---@module 'lazy'
+---@type LazySpec
 return {
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
@@ -12,6 +14,7 @@ return {
         'bash',
         'bibtex',
         'c',
+        'css',
         'diff',
         'html',
         'lua',
@@ -21,17 +24,14 @@ return {
         'rnoweb',
         'vim',
         'vimdoc',
-        'css',
       },
       -- Autoinstall languages that are not installed
       auto_install = true,
+      -- 'latex' and 'markdown' are managed by vimtex and peek.nvim respectively
       ignore_install = { 'latex', 'markdown' },
       highlight = {
         enable = true,
         disable = { 'latex', 'markdown' },
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
         additional_vim_regex_highlighting = { 'ruby', 'latex', 'markdown' },
       },
       indent = {
